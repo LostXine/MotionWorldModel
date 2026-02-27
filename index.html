@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Title — Research Paper</title>
+  <meta name="description" content="Project page for [Paper Title]" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== TOP ANNOUNCEMENT BAR ========== -->
+  <div class="announcement-bar">
+    <span>02/27/2026: 🚧 We are actively working on this project — paper, code, and models will be released as soon as possible. Stay tuned!</span>
+  </div>
+
+  <!-- ========== HEADER / HERO ========== -->
+  <header class="hero">
+    <div class="container">
+      <!--div class="venue-tag">Conference / Journal 20XX</div-->
+
+      <h1 class="paper-title">
+        Motion World Model for Robot Control
+      </h1>
+
+      <!-- Authors -->
+      <div class="authors">
+        <span class="author">
+          <a href="#">Xiang Li</a>
+        </span>
+        <span class="author">
+          <a href="#">Yichi Zhang</a>
+        </span>
+        <span class="author">
+          <a href="#">E Ro Nguyen</a>
+        </span>
+        <span class="author">
+          <a href="#">Kanchana Ranasinghe</a>
+        </span>
+        <span class="author">
+          <a href="#">Ryan Burgert</a>
+        </span>
+        <span class="author">
+          <a href="#">Michael S. Ryoo</a>
+        </span>
+      </div>
+
+      <!-- Affiliations -->
+      <div class="affiliations">
+        <span>Stony Brook University</span>
+      </div>
+      <div class="affiliations">
+        <span>This website was created on Feb 27, 2026</span>
+      </div>
+
+      <!-- Action buttons -->
+      <!--div class="action-buttons">
+        <a href="#" class="btn btn-primary">
+          <i class="fas fa-file-pdf"></i> Paper
+        </a>
+        <a href="#" class="btn btn-secondary">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <a href="#" class="btn btn-secondary">
+          <i class="fas fa-database"></i> Dataset
+        </a>
+        <a href="#" class="btn btn-secondary">
+          <i class="fas fa-video"></i> Video
+        </a>
+        <a href="#" class="btn btn-secondary">
+          <i class="fas fa-desktop"></i> Demo
+        </a>
+      </div-->
+
+      <!-- Teaser image/video -->
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== ABSTRACT ========== -->
+    <section class="section" id="abstract">
+      <div class="container narrow">
+        <h2 class="section-title">Abstract</h2>
+        <p class="abstract-text">
+          <b>Motion World Model (MWM)</b> is a dual-system Vision–Language–Action (VLA) framework. 
+            It leverages a pretrained Image-Text-to-Video diffusion model as System 2 to <em>jointly predict future RGB frames and dense pixel motion sequences</em>. 
+            By explicitly modeling dense motion dynamics in addition to visual appearance, 
+            MWM provides richer predictive representations of future states. 
+            The action expert (System 1) substantially benefits from these motion-aware predictions, 
+            achieving improved performance compared to conventional World Models (WM) that predict RGB observations alone.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== VIDEO DEMO ========== -->
+    <section class="section section-alt" id="video">~
+      <div class="container">
+        <h2 class="section-title">Video</h2>
+        <p class="section-subtitle">The following video demonstrates our system 2 prediction on unseen real-world data.</p>
+        <div class="video-container">
+          <!-- Option A: YouTube embed -->
+          <!-- <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
+
+          <!-- Option B: Local video file -->
+          <video controls poster="assets/video_thumbnail.png">
+            <source src="assets/demo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== REFERENCES ========== -->
+    <section class="section" id="references">
+      <div class="container narrow">
+        <h2 class="section-title">References</h2>
+        <ol class="references-list">
+          <li id="ref1">
+            Nguyen, E. R., Zhang, Y., Ranasinghe, K., Li, X., & Ryoo, M. S. (2025). <em>Pixel Motion Diffusion is What We Need for Robot Control.</em> CVPR’26
+            <a href="#" class="ref-link">[Paper]</a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        First released on Feb 27, 2026. &copy; 2026 The Authors. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
