@@ -86,7 +86,8 @@
         <figure>
           <img src="assets/teaser.png" alt="Teaser figure showing the overview of our method" />
           <figcaption>
-            <strong>Figure 1.</strong> Overview of <b>Motion World Model (MWM)</b>. 
+            <strong>Figure 1.</strong> Overview of <b>Motion World Model (MWM)</b>. MWM leverages a pretrained Image-Text-to-Video diffusion model as System 2 to jointly predict future RGB frames and dense pixel motion sequences. 
+            The action expert (System 1) substantially benefits from these motion-aware predictions, achieving improved performance compared to conventional World Models (WM) that predict RGB observations alone.
           </figcaption>
         </figure>
       </div>
@@ -100,12 +101,14 @@
       <div class="container narrow">
         <h2 class="section-title">Abstract</h2>
         <p class="abstract-text">
+
           <b>Motion World Model (MWM)</b> is a dual-system Vision–Language–Action (VLA) framework. 
             It leverages a pretrained Image-Text-to-Video diffusion model as System 2 to <em>jointly predict future RGB frames and dense pixel motion sequences</em>. 
             By explicitly modeling dense motion dynamics in addition to visual appearance, 
             MWM provides richer predictive representations of future states. 
             The action expert (System 1) substantially benefits from these motion-aware predictions, 
-            achieving improved performance compared to conventional World Models (WM) that predict RGB observations alone.
+            achieving improved performance compared to conventional World Models (WM) that predict RGB observations alone. 
+            DAWN<a href="#ref1" class="cite-tag">[1]</a> is an instantiation of MWM, which is to appear at CVPR 2026.
         </p>
       </div>
     </section>
@@ -135,7 +138,7 @@
         <ol class="references-list">
           <li id="ref1">
             Nguyen, E. R., Zhang, Y., Ranasinghe, K., Li, X., & Ryoo, M. S. (2025). <em>Pixel Motion Diffusion is What We Need for Robot Control.</em> CVPR’26
-            <a href="#" class="ref-link">[Paper]</a>
+            <a href="https://eronguyen.me/DAWN/" class="ref-link">[Project]</a>
           </li>
         </ol>
       </div>

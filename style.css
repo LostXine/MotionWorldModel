@@ -565,6 +565,18 @@ tbody td {
   margin-left: 0.4rem;
 }
 
+.cite-tag {
+  font-size: 0.75em;
+  vertical-align: super;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.cite-tag:hover {
+  text-decoration: underline;
+}
+
 /* ---------- Footer ---------- */
 .footer {
   padding: 2rem 0;
