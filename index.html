@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Motion World Models for Robot Control - SBU</title>
-  <meta name="description" content="Project page for [Paper Title]" />
+  <title>MWM</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="description" content="Project page for Motion World Models for Robot Control" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,22 +36,22 @@
       <!-- Authors -->
       <div class="authors">
         <span class="author">
-          <a href="#">Xiang Li</a>
+          <a href="https://xxli.me/">Xiang Li</a>
         </span>
         <span class="author">
-          <a href="#">Yichi Zhang</a>
+          <a href="https://scholar.google.com/citations?user=HOCyXzsAAAAJ&hl">Yichi Zhang</a>
         </span>
         <span class="author">
-          <a href="#">E Ro Nguyen</a>
+          <a href="https://eronguyen.me/">E Ro Nguyen</a>
         </span>
         <span class="author">
-          <a href="#">Kanchana Ranasinghe</a>
+          <a href="https://kahnchana.github.io/">Kanchana Ranasinghe</a>
         </span>
         <span class="author">
-          <a href="#">Ryan Burgert</a>
+          <a href="https://ryanndagreat.github.io/">Ryan Burgert</a>
         </span>
         <span class="author">
-          <a href="#">Michael S. Ryoo</a>
+          <a href="http://michaelryoo.com/">Michael S. Ryoo</a>
         </span>
       </div>
 
@@ -84,10 +85,12 @@
       <!-- Teaser image/video -->
       <div class="teaser">
         <figure>
-          <img src="assets/teaser.png" alt="Teaser figure showing the overview of our method" />
+          <img src="assets/teaser.gif" alt="WM v.s. MWM" />
+          <img src="assets/demo.gif" alt="MWM real-world demo" />
           <figcaption>
-            <strong>Figure 1.</strong> Overview of <b>Motion World Models (MWM)</b>. MWM leverages a pretrained Image-Text-to-Video diffusion model as System 2 to jointly predict future RGB frames and dense pixel motion sequences. 
-            The action expert (System 1) substantially benefits from these motion-aware predictions, achieving improved performance compared to conventional World Models (WM) that predict RGB observations alone.
+            <strong>Figure 1. </strong> Comparision between World Models (WM) and <b>Motion World Models (MWM)</b>.
+            MWM leverages a pretrained Image-Text-to-Video diffusion model as System 2 to jointly predict <em>future RGB frames and dense pixel motion</em> sequences. 
+            It achieves improved performance compared to conventional World Models (WM) that predict RGB observations alone.
           </figcaption>
         </figure>
       </div>
@@ -101,32 +104,120 @@
       <div class="container narrow">
         <h2 class="section-title">Abstract</h2>
         <p class="abstract-text">
-
           <b>Motion World Models (MWM)</b> is a dual-system Vision–Language–Action (VLA) framework. 
             It leverages a pretrained Image-Text-to-Video diffusion model as System 2 to <em>jointly predict future RGB frames and dense pixel motion sequences</em>. 
             By explicitly modeling dense motion dynamics in addition to visual appearance, 
             MWM provides richer predictive representations of future states. 
             The action expert (System 1) substantially benefits from these motion-aware predictions, 
             achieving improved performance compared to conventional World Models (WM) that predict RGB observations alone. 
-            DAWN<a href="#ref1" class="cite-tag">[1]</a> is an instantiation of MWM, which is to appear at CVPR 2026.
+        </p>
+        <p class="abstract-text">
+          <a href="https://eronguyen.me/DAWN/">DAWN</a><a href="#ref1" class="cite-tag">[1]</a> is an instantiation of MWM, which is to appear at CVPR 2026.
         </p>
       </div>
     </section>
 
-    <!-- ========== VIDEO DEMO ========== -->
-    <section class="section section-alt" id="video">~
+    <!-- ========== METHOD ========== -->
+    <section class="section" id="method">
       <div class="container">
-        <h2 class="section-title">Video</h2>
-        <p class="section-subtitle">The video demonstrates our system 2 prediction on unseen real-world data.</p>
-        <div class="video-container">
-          <!-- Option A: YouTube embed -->
-          <!-- <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
+        <h2 class="section-title">Method</h2>
+        <p>
+          Predicting dense pixel motion is an intuitive way to guide robot control. Previous works like <a href="https://arxiv.org/pdf/2505.07817.pdf">LangToMo</a><a href="#ref2" class="cite-tag">[2]</a>, <a href="https://eronguyen.me/DAWN/">DAWN</a><a href="#ref1" class="cite-tag">[1]</a>
+        have shown the great power of <em>single frame dense motion prediction</em>. We take a step further by using a pretrained Image-Text-to-Video diffusion model as System 2 to jointly predict future RGB frames and dense pixel motion sequences, which makes MWM a superset of WM.
+        </p>
 
-          <!-- Option B: Local video file -->
-          <video controls poster="assets/video_thumbnail.png">
-            <source src="assets/demo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+        <!-- Method overview figure -->
+        <figure class="figure-wide">
+          <img src="assets/main.gif" alt="WM v.s. MWM" />
+          <figcaption>
+            <strong>Figure 2.</strong> Overview of our Motion World Models (MWM). The input is the current RGB observation and language instruction. System 2 predicts future RGB frames and dense pixel motion sequences. System 1 conditioned on the latent reprensentation from the system 2 and predicts dense action chunks.
+          </figcaption>
+        </figure>
+
+        <!-- Method subsections -->
+        <hr class="section-divider" />
+        <p class="section-subtitle">
+          Dense Pixel Motion
+        </p>
+        <p>
+          MWM jointly predicts future RGB frames and <em>dense pixel motion</em> sequences. The dense pixel motion encodes Optical Flow and depth change in HSV color space. Check the interactive visualization below for an example by moving the mouse over an image.
+        </p>
+
+        <!-- HSV Explorer: hover over image to inspect pixel color in HSV -->
+        <div class="hsv-explorer">
+          <p class="hsv-section-caption hsv-fadeable" id="hsv-section-caption"></p>
+
+          <!-- 3-column row: ref-0 | interactive | wheel -->
+          <div class="hsv-row">
+            <div class="hsv-col hsv-fadeable">
+              <img id="hsv-ref-0" class="hsv-col-img" alt="Reference 0" />
+              <p class="hsv-img-caption" id="hsv-ref-caption-0"></p>
+            </div>
+            <div class="hsv-col hsv-fadeable">
+              <div class="hsv-imgbox">
+                <img id="hsv-bg-ref" class="hsv-bg-ref" alt="" />
+                <canvas id="hsv-img-canvas"></canvas>
+                <canvas id="hsv-overlay" class="hsv-overlay"></canvas>
+              </div>
+              <p class="hsv-img-caption" id="hsv-main-caption"></p>
+              <div class="hsv-blend-row">
+                <span class="hsv-blend-lbl">Blend</span>
+                <input type="range" id="hsv-opacity" class="hsv-opacity-slider"
+                       min="0" max="100" value="85" />
+              </div>
+              
+            </div>
+            <div class="hsv-col hsv-col-viz">
+              <div class="hsv-viz-label">Optical Flow Visualization</div>
+              <p class="hsv-hint">Move cursor over the dense pixel motion image</p>
+              <div class="hsv-wheel-wrap">
+                <canvas id="hsv-wheel-bg" width="210" height="210"></canvas>
+                <canvas id="hsv-wheel-fg" width="210" height="210" class="hsv-wheel-fg"></canvas>
+              </div>
+              <div class="hsv-values-row">
+                <div class="hsv-val-item">
+                  <span class="hsv-val-lbl">H: direction</span>
+                  <span id="hv-h" class="hsv-val-num">—</span>
+                  <span class="hsv-val-unit">°</span>
+                </div>
+                <div class="hsv-val-item">
+                  <span class="hsv-val-lbl">V: strength</span>
+                  <span id="hv-v" class="hsv-val-num">—</span>
+                  <span class="hsv-val-unit">%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hsv-dots" id="hsv-dots"></div>
+        </div>
+
+        <hr class="section-divider" />
+        <p class="section-subtitle">
+          Major Advantages
+        </p>
+        <div class="method-grid">
+          <div class="method-card">
+            <div class="method-icon"><i class="fas fa-microchip"></i></div>
+            <h3>Compute-Efficient</h3>
+            <p>
+              Training requires only consumer-grade hardware. Inference supports multiple views and two modalities in a single frame.
+            </p>
+          </div>
+          <div class="method-card">
+            <div class="method-icon"><i class="fas fa-wind"></i></div>
+            <h3>Better Motion Generation</h3>
+            <p>
+              Generates better Optical Flow compared to extracting it from World Models' prediction, (e.g. AVDC<a href="#ref3" class="cite-tag">[3]</a>).
+            </p>
+          </div>
+          <div class="method-card">
+            <div class="method-icon"><i class="fas fa-cube"></i></div>
+            <h3>More Informative</h3>
+            <p>
+              Jointly predicts depth changes, providing richer signals for improved robot control.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -137,8 +228,16 @@
         <h2 class="section-title">References</h2>
         <ol class="references-list">
           <li id="ref1">
-            Nguyen, E. R., Zhang, Y., Ranasinghe, K., Li, X., & Ryoo, M. S. (2025). <em>Pixel Motion Diffusion is What We Need for Robot Control.</em> CVPR’26
+            Nguyen, E. R., Zhang, Y., Ranasinghe, K., Li, X., & Ryoo, M. S. (2025). <em>Pixel motion diffusion is what we need for robot control.</em> CVPR’26
             <a href="https://eronguyen.me/DAWN/" class="ref-link">[Project]</a>
+          </li>
+          <li id="ref2">
+            Ranasinghe, K., Li, X., Nguyen, E. R., Mata, C., Park, J., & Ryoo, M. S. (2025). <em>Pixel motion as universal representation for robot control.</em> arXiv'25.
+            <a href="https://arxiv.org/pdf/2505.07817.pdf" class="ref-link">[Paper]</a>
+          </li>
+          <li id="ref3">
+            Ko, P. C., Mao, J., Du, Y., Sun, S. H., & Tenenbaum, J. B. (2023). <em>Learning to act from actionless videos through dense correspondences.</em> arXiv'23
+            <a href="https://flow-diffusion.github.io/" class="ref-link">[Project]</a>
           </li>
         </ol>
       </div>
@@ -150,7 +249,10 @@
   <footer class="footer">
     <div class="container">
       <p>
-        First released on Feb 27, 2026. &copy; 2026 The Authors. All rights reserved.
+        First released on Feb 27, 2026. Last updated on Mar 2, 2026.
+      </p>
+      <p>
+        &copy; 2026 The Authors. All rights reserved.
       </p>
     </div>
   </footer>
